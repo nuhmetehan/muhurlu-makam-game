@@ -1,0 +1,129 @@
+{
+  "version": 2,
+  "sampleNote": "Portföy incelemesi için 72 kartlık tam desteden seçilmiş 3 örneklik zincir kesiti.",
+  "openingCardId": "cekmece",
+  "cards": [
+    {
+      "id": "cekmece",
+      "avatarId": "elena",
+      "speaker": "İstihbarat Direktörü",
+      "speakerRole": "İstihbarat Direktörü",
+      "text": "Başkanlık masasının mühürlü çekmecesinde gizli bir maden haritası bulundu. Kuzey Kışlası dosyanın kapalı kalmasını istiyor. İçeriği henüz halk bilmiyor. Dosyayı açalım mı?",
+      "weight": 5,
+      "oncePerTerm": true,
+      "conditions": {
+        "requiredFlags": [],
+        "forbiddenFlags": [
+          "SEALED_DRAWER_OPENED",
+          "SEALED_DRAWER_CLOSED"
+        ]
+      },
+      "leftChoice": {
+        "label": "Dosyayı açma, mühürlü bırak",
+        "effects": {
+          "military": 8
+        },
+        "addFlags": [
+          "SEALED_DRAWER_CLOSED"
+        ]
+      },
+      "rightChoice": {
+        "label": "Mührü kır ve dosyayı aç",
+        "effects": {
+          "military": 6,
+          "economy": -8
+        },
+        "nextCardId": "damar",
+        "addFlags": [
+          "SEALED_DRAWER_OPENED"
+        ]
+      }
+    },
+    {
+      "id": "damar",
+      "avatarId": "marko",
+      "speaker": "Birleşik Sendika Sözcüsü",
+      "speakerRole": "Birleşik Sendika Sözcüsü",
+      "text": "Harita, Kızıl Cevher madenini Gölge Konseyi’nin gizlice işlettiğini gösteriyor. İşçi denetimi yasasını halka açıklayıp denetçiler atayalım mı, yoksa dosyayı kapatalım mı?",
+      "weight": 12,
+      "oncePerTerm": true,
+      "conditions": {
+        "requiredFlags": [
+          "SEALED_DRAWER_OPENED"
+        ],
+        "forbiddenFlags": [
+          "VEIN_MAPPED"
+        ]
+      },
+      "leftChoice": {
+        "label": "Reddet, madeni gizli tut",
+        "effects": {
+          "economy": 8
+        },
+        "nextCardId": "golge",
+        "addFlags": [
+          "VEIN_MAPPED"
+        ]
+      },
+      "rightChoice": {
+        "label": "İşçi denetimini yasalaştır",
+        "effects": {
+          "public": 12,
+          "economy": -10
+        },
+        "enactedLaw": {
+          "id": "OPEN_GAUGE",
+          "name": "Açık Sayaç Yasası",
+          "description": "Maden sayaçlarını işçiler denetler. Her çeyrek halk desteğini artırır, bütçeden Kred harcar.",
+          "perTurnEffect": {
+            "public": 1,
+            "economy": -1
+          }
+        },
+        "addFlags": [
+          "VEIN_MAPPED",
+          "OPEN_GAUGE"
+        ],
+        "nextCardId": "golge"
+      }
+    },
+    {
+      "id": "golge",
+      "avatarId": "elena",
+      "speaker": "İstihbarat Direktörü",
+      "speakerRole": "İstihbarat Direktörü",
+      "text": "Gölge Konseyi’nin gizli telefon hattını bulduk. Hattı kesip işletmeyi kapatalım mı, yoksa bir dinleme ekibi mi görevlendirelim? Operasyon gizli kalacak.",
+      "weight": 9,
+      "oncePerTerm": true,
+      "conditions": {
+        "requiredFlags": [
+          "VEIN_MAPPED"
+        ],
+        "forbiddenFlags": [
+          "LIFT_CUT",
+          "LIFT_TAPPED"
+        ]
+      },
+      "leftChoice": {
+        "label": "Hattı kes ve kapat",
+        "effects": {
+          "military": 12,
+          "economy": -8
+        },
+        "addFlags": [
+          "LIFT_CUT"
+        ]
+      },
+      "rightChoice": {
+        "label": "Hattı gizlice dinle",
+        "effects": {
+          "military": 8,
+          "economy": -6
+        },
+        "addFlags": [
+          "LIFT_TAPPED"
+        ]
+      }
+    }
+  ]
+}

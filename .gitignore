@@ -1,0 +1,107 @@
+# ==============================================================================
+# Mühürlü Makam — Güvenli Portföy / Source-Available .gitignore (Beyaz Liste)
+# Kritik oyun motoru, tam kart destesi, görsel/ses varlıkları, imza anahtarları
+# ve derleme dosyaları bilinçli olarak bu repodan hariç tutulmuştur.
+# ==============================================================================
+
+# --- 1. İmza Anahtarları, Sertifikalar ve Gizli Bilgiler (ASLA yüklenmemeli) ---
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+*.cer
+*.crt
+*.der
+*.gpg
+keystore.properties
+signing.properties
+upload-password.xml
+.env
+.env.*
+google-services.json
+service-account*.json
+
+# --- 2. Derleme Çıktıları, Gradle, Kotlin ve Paketler ---
+.gradle/
+.kotlin/
+**/build/
+**/outputs/
+.cxx/
+.externalNativeBuild/
+captures/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.jar
+mapping.txt
+native-debug-symbols.zip
+
+# --- 3. Yerel Ortam, IDE, OS ve Araç Klasörleri ---
+local.properties
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.tmp
+*.log
+*.dmp
+*.hprof
+.openai/
+.claude/
+.cursor/
+.gemini/
+
+# --- 4. Node / TypeScript Artıkları ---
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# --- 5. Kaynak Kod ve Varlıklar (Beyaz Liste Yaklaşımı) ---
+# app/ altında yalnızca GameModels.kt ve Chronology.kt izlenir; mevcut ve yeni
+# eklenecek tüm motor, arayüz, piksel matrisi, ses, kart destesi ve testler
+# otomatik olarak hariç tutulur.
+app/*
+!app/src/
+app/src/*
+!app/src/main/
+app/src/main/*
+!app/src/main/java/
+app/src/main/java/*
+!app/src/main/java/game/
+app/src/main/java/game/*
+!app/src/main/java/game/makam/
+app/src/main/java/game/makam/*
+!app/src/main/java/game/makam/GameModels.kt
+!app/src/main/java/game/makam/Chronology.kt
+
+# docs/ altında yalnızca portföy ekran görüntüleri izlenir
+docs/*
+!docs/screenshots/
+
+# types/ altında yalnızca ortak veri sözleşmesi izlenir
+types/*
+!types/game.ts
+
+# --- 6. Özel Klasörler ve Doğrudan Derlenebilir Proje Yapılandırması ---
+hooks/
+data/
+scripts/
+tests/
+sites/
+AGENTS.md
+gradle/
+gradlew
+gradlew.bat
+build.gradle.kts
+settings.gradle.kts
+gradle.properties
+package.json
+package-lock.json
+tsconfig.json
